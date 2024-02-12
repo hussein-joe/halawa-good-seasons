@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+		<style>
+			.label{
+			font-weight:bold;
+			}
+			.pbody{
+			    width:200px;
+			}
+		</style>
+	
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%;">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span style="height: 5cm;"/>
+								<h:form id="closeCampaignForm">
+								<h:inputHidden value="#{closeCampaignBean.campaign.id}" />
+								<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+									<f:facet name="header" >
+										<h:outputText value="#{msg.campaign_close_panelTitle}"/>
+									</f:facet>
+									
+									<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+										<tr>
+											<td>
+												<rich:messages dir="rtl" showDetail="false" showSummary="true" style="color:red"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+													<rich:dataTable value="#{closeCampaignBean.campaignFinalReport}" 
+															var="currentCampaign" id="closeCampaignDataTable"
+															rows="#{closeCampaignBean.pageSize}"
+															width="100%"
+															>
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_close_campaignSection_name}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_manage_common_addingDate}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_close_campaignSection_caseType}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_close_campaignSection_campaignBenefits}"/>
+																</rich:column>
+																<rich:column rendered="#{closeCampaignBean.needyCaseType == 1}">
+																	<h:outputText value="#{msg.campaign_close_campaignSection_countPendingCampaingBenefit}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="30%">
+															<h:outputText value="#{currentCampaign.campaign.name}"/>
+														</rich:column>
+														<rich:column width="25%">
+															<h:outputText value="#{currentCampaign.campaign.addingDate}">
+																<f:convertDateTime pattern="a h:m yyyy-M-d" timeZone="Egypt" locale="ar_EG" />
+															</h:outputText>
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText rendered="#{currentCampaign.campaign.caseType == 1}" value="#{msg.common_constants_needyCaseType_1}"/>
+															<h:outputText rendered="#{currentCampaign.campaign.caseType == 2}" value="#{msg.common_constants_needyCaseType_2}"/>
+														</rich:column>
+														<rich:column width="15%"> 
+															<h:outputText value="#{closeCampaignBean.campaignFinalReport.countCampaignBenefits}"/>	
+														</rich:column>
+														<rich:column width="15%" rendered="#{closeCampaignBean.needyCaseType == 1}"> 
+															<h:outputText value="#{closeCampaignBean.campaignFinalReport.countRemaingingCampaignBenefits}"/>	
+														</rich:column>
+														 
+													</rich:dataTable>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<rich:spacer height="10" width="100%"/>
+											</td>
+										</tr>
+										<tr>
+											<td width=" 60%" align="center">
+												<rich:dataTable value="#{closeCampaignBean.campaignFinalReport.campaignFinalReportItems}" 
+														var="currentCampaignReportItem" width="60%">
+													<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_close_campaignItemsSection_itemName}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_close_campaignItemsSection_totalQuantity}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="35%">
+															<h:outputText value="#{currentCampaignReportItem.campaignItemType.name}" />
+														</rich:column>
+														<rich:column width="65%">
+															<h:outputText value="#{currentCampaignReportItem.quantity}" >
+																<f:convertNumber locale="ar-EG" maxFractionDigits="0"/>
+															</h:outputText>
+															<h:outputText value="   #{currentCampaignReportItem.campaignItemType.unitName}" />
+														</rich:column>
+												</rich:dataTable>
+											</td>
+										</tr>
+										<tr>
+											<td width="100%">
+												<rich:spacer height="10"/>
+											</td>
+										</tr>
+										<tr>
+											<td width="100%" align="center">
+												<h:commandButton value="#{msg.campaign_close_closeButton}" action="#{closeCampaignBean.closeCampaign}"/>
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+								</h:form>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

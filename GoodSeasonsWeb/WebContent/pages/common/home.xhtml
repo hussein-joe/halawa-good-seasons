@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+	<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%; font-size: large;">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="100%" align="center">
+								<span style="height: 5cm;"/>
+								<h:form id="loginForm">
+									<rich:panel style=" width : 100%;align: center;" styleClass="panel_center_align">
+										<f:facet name="header" >
+											<h:outputText value="#{msg.home_panelTitle}"/>
+										</f:facet>
+										<table width="100%">
+											<tr>
+												<td style="font-size: large; font-weight: bold;">
+													<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" errorStyle="color:red" infoStyle="color:green"/>
+												</td>
+											</tr>
+											<tr>
+												<td width="100%">
+													<img src="../../images/common/home_body.jpg" alt="" />
+												</td>
+											</tr>
+										</table>
+									</rich:panel>
+								</h:form>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

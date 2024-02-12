@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td style=" width : 100%;">
+								<span style="height: 5cm;"/>
+									<h:form id="addUpdateCampaignForm">
+										<rich:panel style=" width : 100%;align: center;" styleClass="panel_center_align">
+											<f:facet name="header">
+												<h:outputText value="#{msg.needyCase_search_panelTitle}"/>
+											</f:facet>
+											<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+												<tr>
+													<td>
+														<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" style="color:red"/>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<table width="70%" style="font-size: large;" align="center">
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_nationalId}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" width="70%">
+																	<h:inputText value="#{searchNeedyCaseBean.searchCriteria.nationalId}" style="width:100%"
+																		label="#{msg.needyCase_search_nationalId}"/>
+																</td>
+															</tr>
+															
+															
+															
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_oldCardNumber}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" width="70%">
+																	<h:inputText value="#{searchNeedyCaseBean.searchCriteria.oldCardNumber}" style="width:100%"
+																		label="#{msg.needyCase_search_oldCardNumber}"/>
+																</td>
+															</tr>
+															
+															
+															
+															<tr style=" height : 13px;">
+																<td colspan="3"/>
+															</tr>
+															
+															
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_name}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" width="70%">
+																	<h:inputText value="#{searchNeedyCaseBean.searchCriteria.name}" style="width:100%"
+																		label="#{msg.needyCase_search_name}"/>
+																</td>
+															</tr>
+															
+															<tr style=" height : 13px;">
+																<td colspan="3"/>
+															</tr>
+															
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_familyPersons}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" dir="rtl" style=" width : 70%;">
+																	<table width="100%">
+																		<tr>
+																			<td width="10%" align="center">
+																				<h:outputText value="#{msg.needyCase_search_monthlyAmount_from}"/>
+																			</td>
+																			<td width="40%">
+																				<h:inputText value="#{searchNeedyCaseBean.searchCriteria.minFamilyPersons}"  style="width :100%"
+																					label="#{msg.needyCase_search_familyPersons}"/>
+																			</td>
+																			<td width="10%" align="center">
+																				<h:outputText value="  #{msg.needyCase_search_monthlyAmount_to}  "/>
+																			</td>
+																			<td width="40%">
+																				<h:inputText value="#{searchNeedyCaseBean.searchCriteria.maxFamilyPersons}" style="width :100%"
+																					label="#{msg.needyCase_search_familyPersons}"/>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															
+															<tr>
+																<td colspan="3" height="13px"/>
+															</tr>
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_maritalStatus}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" dir="rtl" style=" width : 70%;">
+																	<h:selectOneMenu value="#{searchNeedyCaseBean.searchCriteria.maritalStatus}" tabindex="7">
+																		<f:selectItem itemValue="0" itemLabel="------------"/>
+																		<f:selectItem itemValue="1" itemLabel="#{msg.common_constants_maritalStatus_1}"/>
+																		<f:selectItem itemValue="2" itemLabel="#{msg.common_constants_maritalStatus_2}"/>
+																		<f:selectItem itemValue="3" itemLabel="#{msg.common_constants_maritalStatus_3}"/>
+																	</h:selectOneMenu>
+																</td>
+															</tr>
+															
+															<tr>
+																<td colspan="3" height="13px"/>
+															</tr>
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_caseType}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" dir="rtl" style=" width : 70%;">
+																	<h:selectOneMenu value="#{searchNeedyCaseBean.searchCriteria.type}"  tabindex="7">
+																		<f:selectItem itemValue="0" itemLabel="------------"/>
+																		<f:selectItem itemValue="1" itemLabel="#{msg.common_constants_needyCaseType_1}"/>
+																		<f:selectItem itemValue="2" itemLabel="#{msg.common_constants_needyCaseType_2}"/>
+																	</h:selectOneMenu>
+																</td>
+															</tr>
+															
+															
+															
+															<tr>
+																<td colspan="3" height="13px"/>
+															</tr>
+															
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.needyCase_search_monthlyAmount}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" dir="rtl" style=" width : 70%;">
+																	<table width="100%">
+																		<tr>
+																			<td width="10%" align="center">
+																				<h:outputText value="#{msg.needyCase_search_monthlyAmount_from}"/>
+																			</td>
+																			<td width="40%">
+																				<h:inputText value="#{searchNeedyCaseBean.searchCriteria.minMonthlyAmount}"  style="width :100%"
+																					label="#{msg.needyCase_search_monthlyAmount}"/>
+																			</td>
+																			<td width="10%" align="center">
+																				<h:outputText value="  #{msg.needyCase_search_monthlyAmount_to}"/>
+																			</td>
+																			<td width="40%">
+																				<h:inputText value="#{searchNeedyCaseBean.searchCriteria.maxMonthlyAmount}"  style="width :100%"
+																					label="#{msg.needyCase_search_monthlyAmount}"/>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															
+															
+															<tr>
+																<td colspan="3" height="13px"/>
+															</tr>
+															<tr>
+																<td colspan="3" align="center">
+																	<h:commandButton action="#{searchNeedyCaseBean.searchNeedyCase}" 
+																		value="#{msg.needyCase_search_searchButton}" 
+																		type="submit" id="submit"/>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</rich:panel>
+										<h:inputText id="StackOverflow1205114" value="Fix IE bug" style="display: none;" />
+									</h:form>
+								</td>
+							</tr>
+						</table>
+					</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

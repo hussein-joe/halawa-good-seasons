@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: CommonConstants.jar 
+ ExceptionHandling.jar 
+ GoodSeasonsJpa.jar 
+ HalawaLogger.jar 
+ GoodSeasonsService.jar
+

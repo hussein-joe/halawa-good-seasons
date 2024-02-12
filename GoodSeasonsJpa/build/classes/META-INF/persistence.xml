@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="GoodSeasonsJpa" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.halawa.goodseasons.model.entity.Campaign</class>
+		<class>com.halawa.goodseasons.model.entity.CampaignAction</class>
+		<class>com.halawa.goodseasons.model.entity.CampaignItem</class>
+		<class>com.halawa.goodseasons.model.entity.CampaignItemType</class>
+		<class>com.halawa.goodseasons.model.entity.CaseAddress</class>
+		<class>com.halawa.goodseasons.model.entity.Configuration</class>
+		<class>com.halawa.goodseasons.model.entity.NeedyCase</class>
+		<class>com.halawa.goodseasons.model.entity.Privilege</class>
+		<class>com.halawa.goodseasons.model.entity.RegularCase</class>
+		<class>com.halawa.goodseasons.model.entity.IrregularCase</class>
+		<class>com.halawa.goodseasons.model.entity.User</class>
+		<class>com.halawa.goodseasons.model.entity.UserPrivilege</class>
+		<class>com.halawa.goodseasons.model.entity.CampaignActionItem</class>
+		<class>com.halawa.goodseasons.model.entity.ImportedDataItem</class>
+	</persistence-unit>
+</persistence>

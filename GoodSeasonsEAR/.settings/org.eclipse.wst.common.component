@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+<wb-module deploy-name="GoodSeasonsEAR">
+<wb-resource deploy-path="/" source-path="/EarContent"/>
+<dependent-module deploy-path="/" handle="module:/classpath/lib/CommonConstants/lib/commons-beanutils-1.8.3.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module deploy-path="/" handle="module:/classpath/lib/CommonConstants/lib/commons-logging.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module deploy-path="/" handle="module:/classpath/lib/CommonConstants/lib/junit-4.7.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module deploy-path="/" handle="module:/classpath/lib/CommonConstants/lib/log4j.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module deploy-path="/" handle="module:/classpath/lib/CommonConstants/lib/poi-3.7-20101029.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="CommonConstants.jar" deploy-path="/" handle="module:/resource/CommonConstants/CommonConstants">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="ExceptionHandling.jar" deploy-path="/" handle="module:/resource/ExceptionHandling/ExceptionHandling">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="GoodSeasonsDao.jar" deploy-path="/" handle="module:/resource/GoodSeasonsDao/GoodSeasonsDao">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="GoodSeasonsJpa.jar" deploy-path="/" handle="module:/resource/GoodSeasonsJpa/GoodSeasonsJpa">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="GoodSeasonsService.jar" deploy-path="/" handle="module:/resource/GoodSeasonsService/GoodSeasonsService">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module deploy-path="/" handle="module:/resource/GoodSeasonsWeb/GoodSeasonsWeb">
+<dependent-object></dependent-object>
+<dependency-type>uses</dependency-type>
+</dependent-module>
+<dependent-module archiveName="HalawaLogger.jar" deploy-path="/" handle="module:/resource/HalawaLogger/HalawaLogger">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+</wb-module>
+</project-modules>

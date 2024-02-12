@@ -1,0 +1,5 @@
+services:
+  jboss-server:
+    image: "inspectit/jboss:5-1.8.5.101"
+    ports:
+      - "8080:8080"

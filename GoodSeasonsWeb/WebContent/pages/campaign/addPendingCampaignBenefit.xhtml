@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+		<ui:define name="body">
+			<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="font-size: larger;" width="100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span style="height: 5cm;"/>
+								<h:form id="addCampaignBenefitForm">
+									<h:inputHidden value="#{addPendingCampaignBenefitBean.needyCaseNationalId}" />
+									<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align, ">
+										<f:facet name="header">
+											<h:outputText value="#{msg.campaign_actions_addPedningCampaignBenefit_panelTitle}"/>
+										</f:facet>
+										<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+											<tr>
+												<td align="center" style="font-size: larger; font-weight: bold">
+													<h:messages dir="rtl" showDetail="false" showSummary="true" errorStyle="color:red" infoStyle="color:green"/>
+												</td>
+											</tr>
+											
+											<tr>
+												<td>
+													<rich:dataTable value="#{addPendingCampaignBenefitBean.pendingNeedyCaseBenefit}" var="currentBenefit"
+														style="width: 100%">
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_nationalId}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_name}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_familyPersons}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_monthlyAmount}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_lastMonthlyBenefit}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_needyCaseSection_caseType}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="20%">
+															<h:outputText value="#{currentBenefit.needyCase.nationalId}"/>
+														</rich:column>
+														<rich:column width="30%">
+															<h:outputText value="#{currentBenefit.needyCase.fullName}"/>
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="#{currentBenefit.needyCase.familyPersons}"/>
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="#{currentBenefit.needyCase.monthlyAmount}"/>
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText value="#{currentBenefit.needyCase.lastBenefitDate}">
+																<f:convertDateTime pattern="yyyy-M" timeZone="Egypt" locale="ar_EG" />
+															</h:outputText>
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText rendered="#{currentBenefit.needyCase.type == 1}" 
+																value="#{msg.common_constants_needyCaseType_1}"/>
+															<h:outputText rendered="#{currentBenefit.needyCase.type == 2}" 
+																value="#{msg.common_constants_needyCaseType_2}"/>
+														</rich:column>
+													</rich:dataTable>
+												</td>
+											</tr>
+											
+											
+											<tr>
+												<td width="100%" height="30"/>
+											</tr>
+											
+											<tr>
+												<td style="width: 60%" align="center">
+													<table width="60%">
+														<a4j:repeat value="#{addPendingCampaignBenefitBean.pendingNeedyCaseBenefit.pendingCampaignActions}" var="currentPendingCampaignAction">
+															<tr>
+																<td>
+																	<rich:dataTable value="#{currentPendingCampaignAction.pendingCampaignActionItems}"
+																		var="currentCampaignActionItem" style="width: 100%">
+																		<f:facet name="header">
+																			<rich:columnGroup>
+																				<rich:column colspan="2">
+																					<h:outputText value="#{currentPendingCampaignAction.campaign.name}"/>
+																				</rich:column>
+																				<rich:column breakBefore="true">
+																					<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_campaignItemsSection_itemName}"/>
+																				</rich:column>
+																				<rich:column>
+																					<h:outputText value="#{msg.campaign_actions_addPedningCampaignBenefit_campaignItemsSection_originalQuantity}"/>
+																					<h:outputText value=" - "/>
+																					<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_campaignItemsSection_quantity}"/>
+																				</rich:column>
+																			</rich:columnGroup>
+																		</f:facet>
+																		<rich:column width="40%">
+																			<h:outputText value="#{currentCampaignActionItem.campaignActionItem.campaignItemType.name}"/>
+																		</rich:column>
+																		<rich:column width="60%">
+																			<h:outputText value="#{currentCampaignActionItem.campaignActionItem.quantity}"/>
+																			<h:outputText value="    -    "/>
+																			<h:inputText value="#{currentCampaignActionItem.validQuantity}" size="6" label="#{currentCampaignActionItem.campaignActionItem.campaignItemType.name}">
+																			</h:inputText>
+																			<h:outputText value="   " />
+																			<h:outputText value="#{currentCampaignActionItem.campaignActionItem.campaignItemType.unitName}" />
+																		</rich:column>
+																	</rich:dataTable>
+																</td>
+															</tr>
+															<tr>
+																<td height="20px;"/>
+															</tr>
+														</a4j:repeat>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td align="center">
+													<h:commandButton value="#{msg.campaign_actions_addPendingCampaignBenefit_campaignItemsSection_refuseButton}" style="align: center;" 
+														action="#{addPendingCampaignBenefitBean.refuseAllPendingCampaignActions}" tabindex="1" id="submit" type="submit">
+													</h:commandButton>
+													<h:commandButton value="#{msg.campaign_actions_addCampaignBenefit_campaignItemsSection_deliverButton}" style="align: center;" 
+														action="#{addPendingCampaignBenefitBean.deliverPendingCampaignBenefits}" tabindex="2">
+													</h:commandButton>
+												</td>
+												<td>
+												</td>
+											</tr>
+														
+										</table>
+									</rich:panel>
+									<h:inputText id="StackOverflow1205114" value="Fix IE bug" style="display: none;" />
+								</h:form>
+							</td>
+						</tr>
+					</table>
+				</div>
+		</ui:define>
+	</ui:composition>
+
+</html>

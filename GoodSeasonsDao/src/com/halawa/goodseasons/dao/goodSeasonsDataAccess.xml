@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+
+<tx:annotation-driven transaction-manager="transactionManager"/>
+	<context:annotation-config/>
+	
+	
+		
+	<!-- JPA Adapter -->
+	<bean id="hibernateAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="false" />
+		<property name="generateDdl" value="false" />
+		<property name="databasePlatform" value="org.hibernate.dialect.SQLServerDialect" />
+	</bean>
+	
+	<bean  id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	
+	<bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="GoodSeasonsJpa" />
+        <property name="dataSource" ref="Yassin_GoodSeasons_DataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateAdapter"></property>
+    </bean>
+    
+    <bean id="Yassin_GoodSeasons_DataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:yassin_GoodSeasons_DataSource"/>
+  	</bean>
+
+
+	<!-- <context:component-scan base-package="com.halawa.arabianguru.branch.dao.jpa" /> -->
+		
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	
+	<bean id="userDao" class="com.halawa.goodseasons.dao.jpa.JpaUserDao"/>
+	<bean id="configurationDao" class="com.halawa.goodseasons.dao.jpa.JpaConfigurationDao"/>
+	<bean id="campaignDao" class="com.halawa.goodseasons.dao.jpa.JpaCampaignDao"/>
+	<bean id="needyCaseDao" class="com.halawa.goodseasons.dao.jpa.JpaNeedyCaseDao"/>	
+	<bean id="reportingDao" class="com.halawa.goodseasons.dao.jpa.JpaReportingDao"/>
+	<bean id="dataImporterDao" class="com.halawa.goodseasons.dao.jpa.JpaDataImporterDao"/>
+</beans>

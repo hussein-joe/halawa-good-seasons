@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	
+	
+	<named-query name="loadConfigurations">
+		<query>select configuration from Configuration as configuration</query>
+	</named-query>
+	
+	<named-query name="loadConfigurationByName">
+		<query>select configuration from Configuration as configuration where configuration.name=:name</query>
+	</named-query>
+	
+	<named-query name="updateConfiguration">
+		<query>update Configuration set value=:propertyValue where name=:propertyName</query>
+	</named-query>
+	
+	<named-query name="findUserByUsername">
+		<query>select user from User user where LOWER(user.username) =:required_username</query>
+	</named-query>
+	
+	<named-query name="loadActiveUsers">
+		<query>select user from User user where user.status=:activeUserStatus order by user.username</query>
+	</named-query>
+	
+	<named-query name="changeUserPassword">
+		<query>update User set password=:newPassword where id=:userId</query>
+	</named-query>
+	
+	<named-query name="loadMenuUserPrivileges">
+		<query>select privilege from UserPrivilege as userPrivilege join userPrivilege.privilege as privilege  where userPrivilege.user=:userObj and privilege.status=:privilegeStatus and privilege.type=1</query>
+	</named-query>
+	
+	<named-query name="loadUserPrivileges">
+		<query>select privilege from UserPrivilege as userPrivilege join userPrivilege.privilege as privilege  where userPrivilege.user=:userObj and privilege.status=:privilegeStatus</query>
+	</named-query>
+	
+	
+	<named-query name="loadCampaignItemTypes">
+		<query>select itemType from CampaignItemType as itemType where itemType.caseType IN(:campaignItemTypes)</query>
+	</named-query>
+	
+	<named-query name="loadDefaultCampaignItemTypes">
+		<query>select itemType from CampaignItemType as itemType where itemType.defaultItem = 'Y' AND itemType.caseType IN(:campaignItemTypes)</query>
+	</named-query>
+	
+	<named-query name="loadCampiagnsWithStatusAndCaseType">
+		<query>select DISTINCT campaign from Campaign as campaign INNER JOIN FETCH campaign.campaignItems where campaign.status=:campaignStatus AND campaign.campaignType=:campaignType AND campaign.caseType IN(:caseTypes) order by campaign.addingDate</query>
+	</named-query>
+	
+	<named-query name="loadCampiagnsWithStatus">
+		<query>select DISTINCT campaign from Campaign as campaign INNER JOIN FETCH campaign.campaignItems where campaign.status=:campaignStatus order by campaign.addingDate</query>
+	</named-query>
+	
+	<named-query name="loadClosedCampiagns">
+		<query>select campaign from Campaign as campaign where campaign.status=:campaignStatus order by campaign.addingDate</query>
+	</named-query>
+	
+	<named-query name="loadCampaignWithItemsById">
+		<query>select DISTINCT campaign from Campaign as campaign INNER JOIN FETCH campaign.campaignItems where campaign.id=:campaignId</query>
+	</named-query>
+	
+	<named-query name="countCampaignActionsWithStatusType">
+		<query>select count(campaignAction) from CampaignAction as campaignAction where campaignAction.campaign=:campaign AND campaignAction.status IN(:campaignActionStatusValues)</query>
+	</named-query>
+	
+	
+	<named-query name="loadCampaignActionFetchItemsById">
+		<query>select DISTINCT campaignAction from CampaignAction as campaignAction INNER JOIN FETCH campaignAction.campaignActionItems where campaignAction.id=:campaignActionId</query>
+	</named-query>
+	
+	<named-query name="refuseAllPendingCampaignActions">
+		<query>UPDATE CampaignAction SET status=:newActionStatusValue where needyCase=:needyCase AND status=:pendingActionStatusValue</query>
+	</named-query>
+	
+	
+	<named-query name="updatePendingCampaignActionsForCampaigns">
+		<query>UPDATE CampaignAction SET status=:newActionStatusValue where needyCase=:needyCase AND status=:pendingActionStatusValue AND campaign IN(:campaigns)</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCaseByNationalId">
+		<query>select needyCase from NeedyCase as needyCase where needyCase.nationalId=:nationalId AND needyCase.status NOT IN(:deletedNeedyCaseStatusValues)</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCaseByOldNumber">
+		<query>select needyCase from NeedyCase as needyCase where needyCase.smartCardNumber=:smartCardNumber AND needyCase.status NOT IN(:deletedNeedyCaseStatusValues)</query>
+	</named-query>
+	
+	<named-query name="loadIrregularNeedyCaseForConverting">
+		<query>select needyCase from NeedyCase as needyCase LEFT JOIN FETCH needyCase.caseAddress where needyCase.nationalId=:nationalId AND needyCase.type=:irregularNeedyCaseTypeValue AND needyCase.status NOT IN(:deletedNeedyCaseStatusValues)</query>
+	</named-query>
+	
+		
+	<named-query name="editNeedyCase">
+		<query>select needyCase from NeedyCase as needyCase LEFT JOIN FETCH needyCase.caseAddress LEFT JOIN FETCH needyCase.needyCaseAgent where needyCase.id=:needyCaseId</query>
+	</named-query>
+	
+	
+	<named-query name="loadNeedyCaseById">
+		<query>select needyCase from NeedyCase as needyCase where needyCase.id=:needyCaseId</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCasesByTypeAndStatus">
+		<query>select needyCase from NeedyCase as needyCase where needyCase.type=:needyCaseType and needyCase.status IN(:needyCaseStatusTypes) order by needyCase.fullName</query>
+	</named-query>
+	
+	<named-query name="countNeedyCases">
+		<query>select count(*) from NeedyCase as needyCase where needyCase.type=:needyCaseType and needyCase.status IN(:needyCaseStatusTypes)</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCaseCampaignAction">
+		<query>select campaignAction from CampaignAction as campaignAction where campaignAction.campaign=:campaign AND campaignAction.needyCase=:needyCase</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCaseCampaignActionWithStatus">
+		<query>select campaignAction from CampaignAction as campaignAction where campaignAction.campaign=:campaign AND campaignAction.needyCase=:needyCase AND campaignAction.status =:actionStatusTypeValue</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCaseActionsFetchCampaignAndActionItems">
+		<query>select DISTINCT campaignAction from CampaignAction as campaignAction INNER JOIN FETCH campaignAction.campaign INNER JOIN FETCH campaignAction.campaignActionItems  where campaignAction.status=:actionStatusValue AND campaignAction.needyCase=:needyCase</query>
+	</named-query>
+	
+	<named-query name="loadCampaignActions">
+		<query>select campaignAction from CampaignAction as campaignAction INNER JOIN FETCH campaignAction.needyCase where campaignAction.campaign=:campaign</query>
+	</named-query>
+	
+	<named-query name="loadCampaignActionsWithItems">
+		<query>select campaignAction from CampaignAction as campaignAction INNER JOIN FETCH campaignAction.needyCase INNER JOIN FETCH campaignAction.campaignActionItems where campaignAction.campaign=:campaign AND campaignAction.status IN (:campaignActionStatusValues)</query>
+	</named-query>
+
+
+	<named-query name="getUserCampaignsInPeriodUsingSelectedCampaigns">
+		<query>select DISTINCT campaignAction.campaign from CampaignAction as campaignAction where campaignAction.user=:user AND campaignAction.addingDate &gt; :startDate and campaignAction.addingDate &lt;= :endDate AND campaignAction.campaign IN(:selectedCampaigns)</query>
+	</named-query>
+	
+	<named-query name="getUserCampaignsUsingSelectedCampaigns">
+		<query>select DISTINCT campaignAction.campaign from CampaignAction as campaignAction where campaignAction.user=:user AND campaignAction.campaign IN(:selectedCampaigns)</query>
+	</named-query>
+	
+	<named-query name="getUserCampaignsInPeriod">
+		<query>select DISTINCT campaignAction.campaign from CampaignAction as campaignAction where campaignAction.user=:user AND campaignAction.addingDate &gt; :startDate and campaignAction.addingDate &lt;= :endDate</query>
+	</named-query>
+	
+	
+	<named-query name="getUserCampaigns">
+		<query>select DISTINCT campaignAction.campaign from CampaignAction as campaignAction where campaignAction.user=:user</query>
+	</named-query>
+	
+	<named-query name="getUserCampaignActionItemsInPeriod">
+		<query>select NEW com.halawa.goodseasons.dao.model.CampaignItemTotal(campaignActionItem.campaignItemType, SUM(campaignActionItem.quantity)) from CampaignActionItem as campaignActionItem where campaignActionItem.campaignAction.user=:user AND campaignActionItem.campaignAction.campaign=:campaign AND campaignActionItem.campaignAction.addingDate &gt; :startDate and campaignActionItem.campaignAction.addingDate &lt;= :endDate AND campaignActionItem.campaignAction.status IN(:actionStatusValues) group by campaignActionItem.campaignItemType</query>
+	</named-query>
+	
+	<named-query name="getUserCampaignActionItems">
+		<query>select NEW com.halawa.goodseasons.dao.model.CampaignItemTotal(campaignActionItem.campaignItemType, SUM(campaignActionItem.quantity)) from CampaignActionItem as campaignActionItem where campaignActionItem.campaignAction.user=:user AND campaignActionItem.campaignAction.campaign=:campaign AND campaignActionItem.campaignAction.status IN(:actionStatusValues) group by campaignActionItem.campaignItemType</query>
+	</named-query>
+	
+	<named-query name="countUserCampaignActionsInPeriod">
+		<query>select count(*) from CampaignAction as campaignAction where campaignAction.user=:user AND campaignAction.campaign=:campaign AND campaignAction.addingDate &gt; :startDate and campaignAction.addingDate &lt;= :endDate AND campaignAction.status IN(:actionStatusValues)</query>
+	</named-query>
+	
+	<named-query name="countUserCampaignActions">
+		<query>select count(*) from CampaignAction as campaignAction where campaignAction.user=:user AND campaignAction.campaign=:campaign AND campaignAction.status IN(:actionStatusValues)</query>
+	</named-query>
+
+
+	<named-query name="loadDataItems">
+		<query>select i from ImportedDataItem as i order by id</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCasesByNationalId_Report">
+		<query>select needyCase from NeedyCase as needyCase where needyCase.nationalId=:nationalId order by id DESC</query>
+	</named-query>
+	
+	<named-query name="loadNeedyCasesCampaignActions_Report">
+		<query>select campaignAction from CampaignAction as campaignAction INNER JOIN FETCH campaignAction.campaign INNER JOIN FETCH campaignAction.user where campaignAction.needyCase IN(:needyCases) order by campaignAction.addingDate DESC</query>
+	</named-query>
+			
+</entity-mappings>

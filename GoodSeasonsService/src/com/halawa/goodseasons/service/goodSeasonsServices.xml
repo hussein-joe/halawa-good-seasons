@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<import resource="classpath*:com/halawa/goodseasons/dao/goodSeasonsDataAccess.xml"/>
+	
+	<bean id="configurationService" class="com.halawa.goodseasons.service.impl.ConfigurationServiceImpl" 
+		init-method="afterPropertiesSet">
+		<property name="configurationDao" ref="configurationDao"/>
+	</bean>
+	
+	<bean id="userService" class="com.halawa.goodseasons.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+	
+	<bean id="campaignService" class="com.halawa.goodseasons.service.impl.CampaignServiceImpl">
+		<property name="campaignDao" ref="campaignDao"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="needyCaseDao" ref="needyCaseDao"/>
+	</bean>
+	
+	<bean id="needyCaseService" class="com.halawa.goodseasons.service.impl.NeedyCaseServiceImpl">
+		<property name="campaignService" ref="campaignService"/>
+		<property name="needyCaseDao" ref="needyCaseDao"/>
+		<property name="configurationService" ref="configurationService"/>
+	</bean>
+
+	<bean class="com.halawa.goodseasons.service.impl.ReportingServiceImpl" id="reportingService">
+		<property name="reportingDao" ref="reportingDao"/>
+	</bean>	
+	
+	<bean class="com.halawa.goodseasons.service.impl.ImportDataServiceImpl" id="importDataService">
+		<property name="dataImporterDao" ref="dataImporterDao"/>
+		<property name="needyCaseDao" ref="needyCaseDao"/>
+	</bean>
+</beans>

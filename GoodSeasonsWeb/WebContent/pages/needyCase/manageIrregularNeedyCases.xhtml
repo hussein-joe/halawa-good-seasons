@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:extdt="http://labs.jboss.com/jbossrichfaces/ui/extendedDataTable"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+									<f:facet name="header" >
+										<h:outputText value="#{msg.needyCase_manage_irregular_panelTitle}"/>
+									</f:facet>
+									
+									<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+										
+										
+										<tr>
+											<td style="font-size: large; font-weight: bold;">
+												<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" 
+													errorStyle="color:red;" infoStyle="color:green;"/>
+											</td>
+										</tr>
+										
+										<tr>
+											<td height="10px;"/>
+										</tr>
+										
+										<tr>
+											<td width="60%" align="center">
+												<h:form>
+													<table width="60%">
+														<tr>
+															<td align="center">
+																<a4j:htmlCommandLink action="#{manageNeedyCasesBean.exportNeedyCases}">
+																	<h:outputText value="#{msg.needyCase_add_common_exportLink}" />
+																</a4j:htmlCommandLink>
+															</td>
+														</tr>
+													</table>
+												</h:form>
+											</td>
+										</tr>
+										
+										<tr>
+											<td>
+												<a4j:form id="manageIrregularNeedyCasesForm">
+													<rich:dataTable value="#{manageNeedyCasesBean.irregularNeedyCaseDataModel}" 
+															var="currentIrregularCase" id="irregularNeedyCasesTable"
+															rows="#{manageNeedyCasesBean.pageSize}" width="100%">
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_nationalId}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_name}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_familyPersons}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.common_operations}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="20%">
+															<h:outputText value="#{currentIrregularCase.nationalId}"/>
+														</rich:column>
+														<rich:column width="40%">
+															<h:outputText value="#{currentIrregularCase.fullName}"/>
+														</rich:column>
+														<rich:column width="5%"> 
+															<h:outputText value="#{currentIrregularCase.familyPersons}"/>	
+														</rich:column>
+														<rich:column width="35%"> 
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.editIrregullarNeedyCase}" >
+																<f:param name="selectedIrregularNeedyCaseId" value="#{currentIrregularCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_edit}"/>
+															</h:commandLink>
+															
+															<h:outputText value=" - " />
+															<a4j:htmlCommandLink action="#{addUpdateIrregularNeedyCaseBean.printBarCodeToPDF}">
+																<f:param name="nationalId" value="#{currentIrregularCase.nationalId}"/>
+																<h:outputText value="#{msg.needyCase_manage_regular_actions_printCard}"/>
+															</a4j:htmlCommandLink>
+															
+															<h:outputText value=" - " rendered="#{manageNeedyCasesBean.canConvertToRegularNeedyCase}"/>
+															<h:commandLink action="#{addUpdateRegularNeedyCaseBean.convertIrregularNeedyCaseToRegular}" 
+																rendered="#{manageNeedyCasesBean.canConvertToRegularNeedyCase}">
+																<f:param name="selectedIrregularNeedyCaseId" value="#{currentIrregularCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_convertToRegular}"/>
+															</h:commandLink>
+															
+															
+															
+															
+															<h:outputText value=" - " 
+																	rendered="#{manageNeedyCasesBean.canDeleteIrregularNeedyCase}"/>
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.deleteIrregularNeedyCase}" 
+																	rendered="#{manageNeedyCasesBean.canDeleteIrregularNeedyCase}">
+																<f:param name="selectedNeedyCaseId" value="#{currentIrregularCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_delete}"/>
+															</h:commandLink>
+															
+															
+															
+															
+															
+														</rich:column>
+														<f:facet name="footer">
+								                			<rich:datascroller id="irregularNeedyCasesDS"  renderIfSinglePage="false" 
+								                				for="irregularNeedyCasesTable" maxPages="#{manageNeedyCasesBean.pageSize}"/>
+								            			</f:facet>
+													</rich:dataTable>
+												</a4j:form>
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

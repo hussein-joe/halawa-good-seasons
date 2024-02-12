@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 100%; font-size: large;" align="center">
+								<span style="height: 5cm;"/>
+								<h:form id="loginForm" >
+									<rich:panel style=" width : 60%; align: center;" styleClass="panel_center_align">
+										<f:facet name="header">
+											<h:outputText value="#{msg.login_login_panelTitle}"/>
+										</f:facet>
+										<table width="100%" align="center" style="background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+											<tr>
+												<td align="center">
+													<a4j:outputPanel ajaxRendered="true">
+														<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" style="color:red;"/>
+													</a4j:outputPanel>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" style="font-size: large;">
+														<tr>
+															<td align="right">
+																<h:outputText value="#{msg.login_login_username}"/>
+															</td>
+															<td align="right">
+																:
+															</td>
+															<td align="right">
+																<h:selectOneMenu value="#{loginBean.username}" style="width:313px" tabindex="1"
+																		label="#{msg.login_login_username}">
+																	<f:selectItems value="#{loginBean.activeUserNames}"/>
+																</h:selectOneMenu>
+															</td>
+														</tr>
+														
+														
+														<tr>
+															<td align="right">
+																<h:outputText value="#{msg.login_login_password}"/>
+															</td>
+															<td align="right">
+																:
+															</td>
+															<td align="right">
+																<h:inputSecret value="#{loginBean.password}" style="width:313px" tabindex="2"
+																	required="true" label="#{msg.login_login_password}"/>
+															</td>
+														</tr>
+														
+														<tr>
+															<td colspan="3" height="20px;"/>
+														</tr>
+														<tr>
+															<td colspan="3" align="center">
+																
+																<h:commandButton value="#{msg.login_login_loginButton}" style="align: center;" 
+																		action="#{loginBean.login}" tabindex="3"
+																		id="submit" type="submit">
+																</h:commandButton> 
+															</td>
+															<td>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</rich:panel>
+									<h:inputText id="StackOverflow1205114" value="Fix IE bug" style="display: none;" />
+								</h:form>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 100%;" >
+								<span style="height: 5cm;"/>
+								<h:form id="addInvoice" >
+									
+									<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+										<f:facet name="header">
+											<h:outputText value="#{msg.campaign_actions_findNeedyCase_panelTitle}"/>
+										</f:facet>
+										<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+											<tr>
+												<td align="center" style="font-size: large; font-weight: bold;">
+													<a4j:outputPanel ajaxRendered="true">
+														<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" errorStyle="color:red" infoStyle="color:green"/>
+													</a4j:outputPanel>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%">
+														<tr>
+															<td align="right">
+																<h:outputText value="#{msg.campaign_actions_findNeedyCase_nationalId}"/>
+															</td>
+															<td align="right">
+																:
+															</td>
+															<td align="right">
+																<h:inputText value="#{addPendingCampaignBenefitBean.needyCaseNationalId}" style=" width : 313px;"
+																		id ="needyCaseNationalId" tabindex="1"
+																		lang="en" dir="rtl" label="#{msg.campaign_actions_findNeedyCase_nationalId}">
+																</h:inputText>
+															</td>
+														</tr>
+														
+														
+														<tr>
+															<td align="right">
+																<h:outputText value="#{msg.campaign_actions_findNeedyCase_oldNumber}"/>
+															</td>
+															<td align="right">
+																:
+															</td>
+															<td align="right">
+																<h:inputText value="#{addPendingCampaignBenefitBean.needyCaseOldNumber}" style=" width : 313px;"
+																		id ="needyCaseOldNumber" tabindex="2"
+																		lang="en" dir="rtl" label="#{msg.campaign_actions_findNeedyCase_oldNumber}">
+																</h:inputText>
+															</td>
+														</tr>
+														
+														
+														
+														<tr>
+															<td colspan="3" align="center">
+																
+																<h:commandButton value="#{msg.campaign_actions_findNeedyCase_searchButton}" style="align: center;" 
+																		action="#{addPendingCampaignBenefitBean.searchForNeedyCase}" tabindex="3"
+																		id="submit" type="submit">
+																</h:commandButton>
+																 
+															</td>
+															<td>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</rich:panel>
+									<h:inputText id="StackOverflow1205114" value="Fix IE bug" style="display: none;" />
+								</h:form>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:extdt="http://labs.jboss.com/jbossrichfaces/ui/extendedDataTable"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      >
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+									<f:facet name="header" >
+										<h:outputText value="#{msg.reports_needyCaseBenefits_result_panelTitle}"/>
+									</f:facet>
+									
+									<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+										<tr>
+											<td style="font-size: large; font-weight: bold;">
+												<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" style="color:red"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<h:form id="needyCaseBenefitsReportResultForm">
+													<a4j:region>
+													<rich:dataTable value="#{needyCaseBenefitsReportBean.needyCaseBenefitsReportResult.needyCaseBenefits}" 
+															var="currentCampaignAction" id="needyCaseBenefitsReportResultTable"
+															rows="#{needyCaseBenefitsReportBean.pageSize}"
+															width="100%" rendered="#{!empty needyCaseBenefitsReportBean.needyCaseBenefitsReportResult}"
+															>
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.reports_needyCaseBenefits_result_campaignName_regular}" rendered="#{needyCaseBenefitsReportBean.needyCaseBenefitsReportResult.needyCase.type == 1}"/>
+																	<h:outputText value="#{msg.reports_needyCaseBenefits_result_campaignName_irregular}" rendered="#{needyCaseBenefitsReportBean.needyCaseBenefitsReportResult.needyCase.type == 2}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.reports_needyCaseBenefits_result_actionDate}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.reports_needyCaseBenefits_result_actionStatus}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.reports_needyCaseBenefits_result_user}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.common_operations}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="35%">
+															<h:outputText value="#{currentCampaignAction.campaign.name}"/>
+														</rich:column>
+														<rich:column width="25%">
+															<h:outputText value="#{currentCampaignAction.addingDate}">
+																<f:convertDateTime pattern="a h:m yyyy-M-d" timeZone="Egypt" locale="ar_EG" />
+															</h:outputText>
+														</rich:column>
+														<rich:column width="15%">
+															<h:outputText rendered="#{currentCampaignAction.status == 5}" value="#{msg.common_constants_campaignActionStatus_5}"/>
+															<h:outputText rendered="#{currentCampaignAction.status == 4}" value="#{msg.common_constants_campaignActionStatus_4}"/>
+															<h:outputText rendered="#{currentCampaignAction.status == 3}" value="#{msg.common_constants_campaignActionStatus_3}"/>
+															<h:outputText rendered="#{currentCampaignAction.status == 2}" value="#{msg.common_constants_campaignActionStatus_2}"/>
+															<h:outputText rendered="#{currentCampaignAction.status == 1}" value="#{msg.common_constants_campaignActionStatus_1}"/>
+														</rich:column>
+														<rich:column width="25%"> 
+															<h:outputText value="#{currentCampaignAction.user.username}"/>	
+														</rich:column>
+														<rich:column>
+															<a4j:commandLink ajaxSingle="true" id="showDetailsLink"
+                        											oncomplete="#{rich:component('needyCaseBenefitDetailsPanel')}.show()">
+                        										<f:setPropertyActionListener target="#{needyCaseBenefitsReportBean.selectedCampaignActionId}" value="#{currentCampaignAction.id}"/>
+                        										<h:outputText value="Details" />
+															</a4j:commandLink>
+															
+															
+														</rich:column>
+														<f:facet name="footer">
+								                			<rich:datascroller id="needyCaseBenefitsReportDS"  renderIfSinglePage="false" 
+								                				for="needyCaseBenefitsReportResultTable"/>
+								            			</f:facet>
+													</rich:dataTable>
+													</a4j:region>
+												</h:form>
+												<rich:modalPanel id="needyCaseBenefitDetailsPanel" autosized="true" width="315" height="230">
+													<f:facet name="header">
+														<h:panelGroup >
+															<h:outputText value="التفاصيل" />
+														</h:panelGroup>
+									                </f:facet>
+									                <h:panelGroup layout="block" styleClass="scrolls" style="padding-top: 1cm;">
+									                	<a4j:outputPanel ajaxRendered="true">
+									                	<rich:dataTable value="#{needyCaseBenefitsReportBean.selectedCampaignActionItems}"
+																var="currentCampaignItem" id="selectedCampaignActionItemsTable" rendered="#{!empty needyCaseBenefitsReportBean.selectedCampaignActionItems}"
+																style="width: 100%; vertical-align: 10px;">
+															<f:facet name="header">
+																<rich:columnGroup>
+																	<rich:column>
+																		<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_campaignItemsSection_itemName}"/>
+																	</rich:column>
+																	<rich:column>
+																		<h:outputText value="#{msg.campaign_actions_addCampaignBenefit_campaignItemsSection_quantity}"/>
+																	</rich:column>
+																</rich:columnGroup>
+															</f:facet>
+															<rich:column width="40%">
+																<h:outputText value="#{currentCampaignItem.campaignItemType.name}"/>
+															</rich:column>
+															<rich:column width="60%">
+																<h:outputText value="#{currentCampaignItem.quantity}"/>
+																<h:outputText value="   " />
+																<h:outputText value="#{currentCampaignItem.campaignItemType.unitName}" style="width: 50px;"/>
+															</rich:column>
+														</rich:dataTable>
+														
+														<h:inputTextarea value="#{needyCaseBenefitsReportBean.selectedCampaignAction.note}" style="width : 313px;" id="campaignBenefitActionOtherInfo" rendered="#{needyCaseBenefitsReportBean.selectedCampaignAction.note != null}"
+															readonly="true"/>
+														</a4j:outputPanel>
+									                </h:panelGroup>
+									                <br/>
+									                <div align="center"> 
+									                	<a href="#" onclick="#{rich:component('needyCaseBenefitDetailsPanel')}.hide()">
+									                		<h:outputText value="اغلاق" />
+									                	</a>
+									                </div>
+												</rich:modalPanel>
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

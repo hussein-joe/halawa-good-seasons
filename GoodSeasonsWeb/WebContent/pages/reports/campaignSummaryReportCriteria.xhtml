@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td style=" width : 100%;">
+								<span style="height: 5cm;"/>
+									<h:form id="addUpdateCampaignForm">
+										<rich:panel style=" width : 100%;align: center;" styleClass="panel_center_align">
+											<f:facet name="header">
+												<h:outputText value="#{msg.reports_campaignSummary_panelTitle}"/>
+											</f:facet>
+											<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+												<tr>
+													<td>
+														<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" style="color:red"/>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<table width="70%" style="font-size: large;" align="center">
+															<tr>
+																<td align="right" width="25%">
+																	<h:outputText value="#{msg.reports_campaignSummary_campaign}"/>
+																</td>
+																<td align="right" width="5%">
+																	:
+																</td>
+																<td align="right" width="70%">
+																	<h:selectOneMenu value="#{campaignSummaryReportBean.campaignSummaryReportCriteria.campaignId}" style="width: 100%" tabindex="1">
+																		<f:selectItems value="#{campaignSummaryReportBean.allCampaigns}"/>
+																	</h:selectOneMenu>
+																</td>
+															</tr>
+															
+															
+															
+															<tr>
+																<td colspan="3" height="13px"/>
+															</tr>
+															<tr>
+																<td colspan="3" align="center">
+																	<h:commandButton action="#{campaignSummaryReportBean.generateCampaignSummaryReport}" 
+																		value="#{msg.reports_campaignSummary_generateReportButton}" tabindex="2"
+																		id="submit" type="submit"/>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</rich:panel>
+										<h:inputText id="StackOverflow1205114" value="Fix IE bug" style="display: none;" />
+									</h:form>
+								</td>
+							</tr>
+						</table>
+					</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

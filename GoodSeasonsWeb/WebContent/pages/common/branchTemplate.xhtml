@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+		<head dir="rtl">
+			
+		<title><ui:insert name="pageTitle"><h:outputText value="#{msg.common_pageTitle}"/></ui:insert></title>
+		<link rel="stylesheet" type="text/css" href="/css/common/common_classes.css" />
+		
+		<style type="text/css">
+			body {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: large;
+			}
+			.header {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 18px;
+			}
+			.bottom {
+				  font-family: Verdana, Arial, Helvetica, sans-serif;
+				  font-size: 9px;
+				  text-align: center;
+				  vertical-align: middle;
+				  color: #8E969D;
+			}
+			.panel_center_align {
+				
+				vertical-align: middle;
+			}
+			.template_body_table {
+
+				font-size: larger;   
+				background-image: url('../../images/common/right.png'); 
+				background-repeat: repeat-x;
+			}
+		</style>
+		</head>
+
+<body dir="rtl">
+<table style="border:1px solid #CAD6E0;height: 100%"  align="center" cellpadding="0" cellspacing="0" border="0" width="100%">
+<tbody>
+
+	<tr>
+		<td class="header" height="42" align="center" valign="middle" width="100%" bgcolor="#E4EBEB">
+			<ui:insert name="pageHeader">
+				<ui:include src="/pages/common/header.xhtml" />
+			</ui:insert>
+		</td>
+	</tr>
+	<tr>
+		<td height="3" width="100%" bgcolor="#CAD6E0"></td>
+	</tr>	
+
+	<tr style=" height : 350px;">
+		<td width="100%" valign="top">
+			<table  width="100%" cellpadding="0" cellspacing="0">
+				<tr style=" height : 336px;">
+					<td valign="top" align="right" style=" width : 18%;">
+						<ui:insert name="left_menu">
+							<ui:include src="/pages/common/rightMenu.xhtml" />
+						</ui:insert>
+					</td>
+					<td style="width: 3%;">
+					</td>
+					<td valign="top" style="width : 76;" align="right" colspan="2">
+						<ui:insert name="body" ></ui:insert>
+					</td>
+					<td style="width: 3%;" />
+				</tr>
+			</table>
+		</td>
+	</tr>	
+	
+	<tr>
+		<td colspan="4"  valign="bottom" height="1" width="100%" bgcolor="#CAD6E0">
+			<hr style="border-color: red;"/>
+		</td>
+	</tr>
+</tbody>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+           
+           
+	var forms = document.forms;
+	var len = forms.length;
+	
+	for (var i = 0; i < len; i++) {
+		var form = forms[i];
+		for (var j = 0; j < form.length; j++) {
+			var input = form[j];
+			
+			if (input.type != "hidden"
+			&& input.type != "button"
+			&& input.type != "submit") {
+	
+				if (!input.disabled) {
+					input.focus();
+					j = form.length;
+					i = len;
+				}
+			}
+		}
+	}
+	//]]>
+</script>
+</body>
+		
+</html>

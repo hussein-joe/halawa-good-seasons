@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+									<f:facet name="header" >
+										<h:outputText value="#{msg.campaign_manage_closed_panelTitle}"/>
+									</f:facet>
+									
+									<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+										<tr>
+											<td id="messageTD">
+												<rich:messages dir="rtl" showDetail="false" showSummary="true" style="color:red"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<h:form id="manageClosedCampaignsForm">
+													<rich:dataTable value="#{manageCampaignsBean.closedCampaigns}" 
+															var="currentCampaign" id="closedCampaignsTable"
+															rows="#{manageCampaignsBean.pageSize}"
+															width="100%" reRender="closedCampaignsDS"
+															reRenderAfterComplete="messageTD"
+															>
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_manage_common_campaignName}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_manage_common_caseType}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_manage_common_addingDate}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.campaign_manage_closed_endDate}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="30%" sortBy="#{currentCampaign.name}">
+															<h:outputText value="#{currentCampaign.name}"/>
+														</rich:column>
+														<rich:column width="15%" filterExpression="#{manageCampaignsBean.selectedCaseType == 0 || manageCampaignsBean.selectedCaseType == currentCampaign.caseType}">
+															<f:facet name="header">
+																<h:selectOneMenu value="#{manageCampaignsBean.selectedCaseType}">
+																	<f:selectItem itemLabel="-------" itemValue="0"/>
+																	<f:selectItem itemLabel="#{msg.common_constants_needyCaseType_1}" itemValue="1"/>
+																	<f:selectItem itemLabel="#{msg.common_constants_needyCaseType_2}" itemValue="2"/>
+																	<a4j:support event="onchange" reRender="closedCampaignsTable,closedCampaignsDS"/>
+																</h:selectOneMenu>
+															</f:facet>
+															<h:outputText rendered="#{currentCampaign.caseType == 1}" value="#{msg.common_constants_needyCaseType_1}"/>
+															<h:outputText rendered="#{currentCampaign.caseType == 2}" value="#{msg.common_constants_needyCaseType_2}"/>
+														</rich:column>
+														<rich:column width="27%" sortBy="#{currentCampaign.addingDate}">
+															<h:outputText value="#{currentCampaign.addingDate}">
+																<f:convertDateTime pattern="a h:m yyyy-M-d" timeZone="Egypt" locale="ar_EG" />
+															</h:outputText>
+														</rich:column>
+														<rich:column width="28%" sortBy="#{currentCampaign.endDate}">
+															<h:outputText value="#{currentCampaign.endDate}">
+																<f:convertDateTime pattern="a h:m yyyy-M-d" timeZone="Egypt" locale="ar_EG" />
+															</h:outputText>
+														</rich:column>
+														<f:facet name="footer">
+								                			<rich:datascroller id="closedCampaignsDS"  renderIfSinglePage="false" />
+								            			</f:facet>
+													</rich:dataTable>
+												</h:form>
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

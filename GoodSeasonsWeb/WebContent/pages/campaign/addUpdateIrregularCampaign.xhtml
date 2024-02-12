@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table>
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td style="width: 100%">
+								<span style="height: 5cm;"/>
+									<h:form id="addUpdateCampaignForm">
+										<rich:panel style=" width : 100%;align: center;" styleClass="panel_center_align">
+											<f:facet name="header">
+												<h:outputText value="#{msg.campaign_addCampaign_irregullarCampaign_panelTitle}"/>
+											</f:facet>
+											<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+												<tr>
+													<td align="center">
+														<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" style="color:red"/>
+													</td>
+												</tr>
+												<tr>
+													<td style=" width : 75%;">
+														<table style="font-size: large; width: 70%" align="center">
+															<tr>
+																<td align="right">
+																	<h:outputText value="#{msg.campaign_addCampaign_campaignName}"/>
+																</td>
+																<td align="right">
+																	:
+																</td>
+																<td align="right">
+																	<h:inputText value="#{addUpdateCampaignBean.campaign.name}" required="true" style=" width : 313px;" 
+																			id="campaignName" readonly="#{!addUpdateCampaignBean.canUpdateCampaign}" tabindex="1"
+																			label="#{msg.campaign_addCampaign_campaignName}"
+																			lang="ar" dir="rtl"/>
+																</td>
+															</tr>
+															
+															
+															<tr style=" height : 25px;">
+																<td colspan="3">
+																	<rich:separator height="5" lineType="dashed"/>
+																</td>
+															</tr>
+															<tr>
+																<td align="left" colspan="3">
+																	<h:commandButton value="#{msg.campaign_addCampaign_regullarCampaign_addItemButton}" 
+																		action="#{addUpdateCampaignBean.addCampaignItem}"
+																		disabled="#{!addUpdateCampaignBean.canUpdateCampaign}">
+																	</h:commandButton>
+																</td>
+															</tr>
+															<tr>
+																<td style="width: 100%" colspan="3">
+																	<rich:dataTable value="#{addUpdateCampaignBean.campaignItems}"
+																		var="currentCampaignItem" id="irregularCampaignItemsTable"
+																		style="width: 100%" rowKeyVar="currentRowIndex">
+																		<f:facet name="header">
+																			<rich:columnGroup>
+																				<rich:column>
+																				</rich:column>
+																				<rich:column>
+																					<h:outputText value="#{msg.campaign_addCampaign_itemsTable_itemName}"/>
+																				</rich:column>
+																				<rich:column>
+																					<h:outputText value="#{msg.campaign_irregular_addCampaign_itemsTable_minItemQuantity}"/>
+																				</rich:column>
+																				<rich:column>
+																					<h:outputText value="#{msg.campaign_irregular_addCampaign_itemsTable_maxItemQuantity}"/>
+																				</rich:column>
+																			</rich:columnGroup>
+																		</f:facet>
+																		<rich:column style="width:15%">
+																			<h:commandButton value="#{msg.common_delete}" action="#{addUpdateCampaignBean.deleteCampaignItem}" 
+																					disabled="#{!addUpdateCampaignBean.canUpdateCampaign || currentCampaignItem.campaignItemType.defaultItem}"  immediate="true">
+																				<f:setPropertyActionListener value="#{currentRowIndex}" target="#{addUpdateCampaignBean.selectedCampaignItemIndex}"/>
+																			</h:commandButton>
+																		</rich:column>
+																		<rich:column style="width:25%">
+																			<h:selectOneMenu value="#{currentCampaignItem.campaignItemType.id}" 
+																					readonly="#{!addUpdateCampaignBean.canUpdateCampaign}" tabindex="3"
+																					style=" width : 190px;">
+																				<f:selectItems value="#{addUpdateCampaignBean.irregullarCampaignItemTypesSelect}"/>
+																				<a4j:support reRender="irregularCampaignItemsTable" event="onchange"/>
+																			</h:selectOneMenu>
+																		</rich:column>
+																		<rich:column style="width:30%">
+																			<h:inputText value="#{currentCampaignItem.minQuantity}" 
+																				readonly="#{!addUpdateCampaignBean.canUpdateCampaign}" tabindex="4"
+																				label="#{msg.campaign_irregular_addCampaign_itemsTable_minItemQuantity}"
+																				lang="en" dir="rtl" size="6"/>
+																			<h:outputText value="   " />
+																			<h:outputText value="#{addUpdateCampaignBean.campaignItemTypeUnitsMap[currentCampaignItem.campaignItemType.id]}"/>
+																		</rich:column>
+																		<rich:column style="width:30%">
+																			<h:inputText value="#{currentCampaignItem.maxQuantity}" 
+																				readonly="#{!addUpdateCampaignBean.canUpdateCampaign}" tabindex="5"
+																				label="#{msg.campaign_irregular_addCampaign_itemsTable_maxItemQuantity}"
+																				lang="en" dir="rtl" size="6"/>
+																			<h:outputText value="   " />
+																			<h:outputText value="#{addUpdateCampaignBean.campaignItemTypeUnitsMap[currentCampaignItem.campaignItemType.id]}"/>
+																		</rich:column>
+																	</rich:dataTable>
+																</td>
+															</tr>
+																		
+															
+															
+															
+															
+															<tr>
+																<td colspan="3" style="height: 20px;"/>
+															</tr>
+															
+															
+															
+															
+															<tr>
+																<td colspan="3" align="center">
+																	<h:commandButton action="#{addUpdateCampaignBean.saveIrregullarCampaign}" value="#{msg.common_save}" disabled="#{!addUpdateCampaignBean.canUpdateCampaign}" tabindex="6"/>
+																</td>
+															</tr>
+															
+															
+															
+															
+															
+															
+														</table>
+													</td>
+												</tr>
+											</table>
+										</rich:panel>
+									</h:form>
+								</td>
+							</tr>
+						</table>
+					</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="userHome::#pages#common#home.xhtml"
+    NAME="output" PATH="/pages/common/home.xhtml"
+    TARGET="rules:#pages#common#home.xhtml" TITLE="userHome" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#pages#login#login.xhtml"
+    NAME="output1" PATH="/pages/login/login.xhtml"
+    TARGET="rules:#pages#login#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightMenu_addRegularCampaign::#pages#campaign#addUpdateRegularCampaign.xhtml"
+    NAME="output2" PATH="/pages/campaign/addUpdateRegularCampaign.xhtml"
+    TARGET="rules:#pages#campaign#addUpdateRegularCampaign.xhtml"
+    TITLE="rightMenu_addRegularCampaign" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_campaign_addIrrRegullarCampaign::#pages#campaign#addUpdateIrregularCampaign.xhtml"
+    NAME="output3"
+    PATH="/pages/campaign/addUpdateIrregularCampaign.xhtml"
+    TARGET="rules:#pages#campaign#addUpdateIrregularCampaign.xhtml"
+    TITLE="rightmenu_campaign_addIrrRegullarCampaign" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCaseBenefit_addBenefit::#pages#campaign#defineCampaignBenefit.xhtml"
+    NAME="output4" PATH="/pages/campaign/defineCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#defineCampaignBenefit.xhtml"
+    TITLE="rightmenu_needyCaseBenefit_addBenefit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCase_addRegularCase::#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    NAME="output5"
+    PATH="/pages/needyCase/addUpdateRegularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    TITLE="rightmenu_needyCase_addRegularCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCase_manageRegularCase::#pages#needyCase#manageRegularNeedyCases.xhtml"
+    NAME="output6" PATH="/pages/needyCase/manageRegularNeedyCases.xhtml"
+    TARGET="rules:#pages#needyCase#manageRegularNeedyCases.xhtml"
+    TITLE="rightmenu_needyCase_manageRegularCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCase_addIrrRegularCase::#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    NAME="output7"
+    PATH="/pages/needyCase/addUpdateIrregularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    TITLE="rightmenu_needyCase_addIrrRegularCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCase_manageIrregularCase::#pages#needyCase#manageIrregularNeedyCases.xhtml"
+    NAME="output8"
+    PATH="/pages/needyCase/manageIrregularNeedyCases.xhtml"
+    TARGET="rules:#pages#needyCase#manageIrregularNeedyCases.xhtml"
+    TITLE="rightmenu_needyCase_manageIrregularCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_campaign_manageActiveCampaigns::#pages#campaign#manageActiveCampaigns.xhtml"
+    NAME="output9" PATH="/pages/campaign/manageActiveCampaigns.xhtml"
+    TARGET="rules:#pages#campaign#manageActiveCampaigns.xhtml"
+    TITLE="rightmenu_campaign_manageActiveCampaigns" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_campaign_manageClosedCampaigns::#pages#campaign#manageClosedCampaigns.xhtml"
+    NAME="output10" PATH="/pages/campaign/manageClosedCampaigns.xhtml"
+    TARGET="rules:#pages#campaign#manageClosedCampaigns.xhtml"
+    TITLE="rightmenu_campaign_manageClosedCampaigns" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightMenu_changePassword::#pages#login#changePassword.xhtml"
+    NAME="output11" PATH="/pages/login/changePassword.xhtml"
+    TARGET="rules:#pages#login#changePassword.xhtml"
+    TITLE="rightMenu_changePassword" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_reports_userCampaignActions::#pages#reports#userCampaignActionsReportCriteria.xhtml"
+    NAME="output12"
+    PATH="/pages/reports/userCampaignActionsReportCriteria.xhtml"
+    TARGET="rules:#pages#reports#userCampaignActionsReportCriteria.xhtml"
+    TITLE="rightmenu_reports_userCampaignActions" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_reports_campaignSummary::#pages#reports#campaignSummaryReportCriteria.xhtml"
+    NAME="output13"
+    PATH="/pages/reports/campaignSummaryReportCriteria.xhtml"
+    TARGET="rules:#pages#reports#campaignSummaryReportCriteria.xhtml"
+    TITLE="rightmenu_reports_campaignSummary" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCase_searchNeedyCase::#pages#needyCase#searchNeedyCase.xhtml"
+    NAME="output14" PATH="/pages/needyCase/searchNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#searchNeedyCase.xhtml"
+    TITLE="rightmenu_needyCase_searchNeedyCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_needyCaseBenefit_addExceptionalBenefit::#pages#campaign#defineExceptionalCampaignBenefit.xhtml"
+    NAME="output15"
+    PATH="/pages/campaign/defineExceptionalCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#defineExceptionalCampaignBenefit.xhtml"
+    TITLE="rightmenu_needyCaseBenefit_addExceptionalBenefit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="rightmenu_reports_needyCaseBenefits::#pages#reports#needyCaseBenefitsReportCriteria.xhtml"
+    NAME="output16"
+    PATH="/pages/reports/needyCaseBenefitsReportCriteria.xhtml"
+    TARGET="rules:#pages#reports#needyCaseBenefitsReportCriteria.xhtml"
+    TITLE="rightmenu_reports_needyCaseBenefits" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#common#home.xhtml"
+  PATH="/pages/common/home.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#login#login.xhtml"
+  PATH="/pages/login/login.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#addUpdateRegularCampaign.xhtml"
+  PATH="/pages/campaign/addUpdateRegularCampaign.xhtml"
+  SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#addUpdateIrregularCampaign.xhtml"
+  PATH="/pages/campaign/addUpdateIrregularCampaign.xhtml"
+  SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#campaign#defineCampaignBenefit.xhtml"
+  PATH="/pages/campaign/defineCampaignBenefit.xhtml" SHAPE="32,673,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#campaign#defineCampaignBenefit.xhtml:0"
+   NAME="item" PATH="/pages/campaign/defineCampaignBenefit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="addCampaignBenefit::#pages#campaign#addCampaignBenefit.xhtml"
+    NAME="output" PATH="/pages/campaign/addCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#addCampaignBenefit.xhtml"
+    TITLE="addCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="addIrregularCampaignBenefit::#pages#campaign#addIrregularCampaignBenefit.xhtml"
+    NAME="output1"
+    PATH="/pages/campaign/addIrregularCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#addIrregularCampaignBenefit.xhtml"
+    TITLE="addIrregularCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="viewNeedycasePendingOneBenefit::#pages#campaign#addPendingCampaignBenefit.xhtml"
+    NAME="output2"
+    PATH="/pages/campaign/addPendingCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#addPendingCampaignBenefit.xhtml"
+    TITLE="viewNeedycasePendingOneBenefit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#campaign#addCampaignBenefit.xhtml"
+  PATH="/pages/campaign/addCampaignBenefit.xhtml" SHAPE="240,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#campaign#addCampaignBenefit.xhtml:0"
+   NAME="item" PATH="/pages/campaign/addCampaignBenefit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="defineCampaignBenefit::#pages#campaign#defineCampaignBenefit.xhtml"
+    NAME="output" PATH="/pages/campaign/defineCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#defineCampaignBenefit.xhtml"
+    TITLE="defineCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+  PATH="/pages/needyCase/addUpdateRegularNeedyCase.xhtml"
+  SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#needyCase#manageRegularNeedyCases.xhtml"
+  PATH="/pages/needyCase/manageRegularNeedyCases.xhtml"
+  SHAPE="304,561,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#needyCase#manageRegularNeedyCases.xhtml:0"
+   NAME="item" PATH="/pages/needyCase/manageRegularNeedyCases.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editRegularNeedyCase::#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    NAME="output"
+    PATH="/pages/needyCase/addUpdateRegularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    TITLE="editRegularNeedyCase" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+  PATH="/pages/needyCase/addUpdateIrregularNeedyCase.xhtml"
+  SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#needyCase#manageIrregularNeedyCases.xhtml"
+  PATH="/pages/needyCase/manageIrregularNeedyCases.xhtml"
+  SHAPE="304,625,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#needyCase#manageIrregularNeedyCases.xhtml:0"
+   NAME="item" PATH="/pages/needyCase/manageIrregularNeedyCases.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="convertIrregularToRegularCase::#pages#needyCase#convertIrregularToRegularCase.xhtml"
+    NAME="output"
+    PATH="/pages/needyCase/convertIrregularToRegularCase.xhtml"
+    TARGET="rules:#pages#needyCase#convertIrregularToRegularCase.xhtml"
+    TITLE="convertIrregularToRegularCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editIrregularNeedyCase::#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    NAME="output1"
+    PATH="/pages/needyCase/addUpdateIrregularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    TITLE="editIrregularNeedyCase" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#needyCase#convertIrregularToRegularCase.xhtml"
+  PATH="/pages/needyCase/convertIrregularToRegularCase.xhtml"
+  SHAPE="512,833,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#campaign#manageActiveCampaigns.xhtml"
+  PATH="/pages/campaign/manageActiveCampaigns.xhtml" SHAPE="304,657,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#campaign#manageActiveCampaigns.xhtml:0"
+   NAME="item" PATH="/pages/campaign/manageActiveCampaigns.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="closeActiveCampaign::#pages#campaign#closeActiveCampaign.xhtml"
+    NAME="output" PATH="/pages/campaign/closeActiveCampaign.xhtml"
+    TARGET="rules:#pages#campaign#closeActiveCampaign.xhtml"
+    TITLE="closeActiveCampaign" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editRegularCampaign::#pages#campaign#addUpdateRegularCampaign.xhtml"
+    NAME="output1" PATH="/pages/campaign/addUpdateRegularCampaign.xhtml"
+    TARGET="rules:#pages#campaign#addUpdateRegularCampaign.xhtml"
+    TITLE="editRegularCampaign" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editIrregularCampaign::#pages#campaign#addUpdateIrregularCampaign.xhtml"
+    NAME="output2"
+    PATH="/pages/campaign/addUpdateIrregularCampaign.xhtml"
+    TARGET="rules:#pages#campaign#addUpdateIrregularCampaign.xhtml"
+    TITLE="editIrregularCampaign" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#campaign#manageClosedCampaigns.xhtml"
+  PATH="/pages/campaign/manageClosedCampaigns.xhtml" SHAPE="304,689,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#campaign#closeActiveCampaign.xhtml"
+  PATH="/pages/campaign/closeActiveCampaign.xhtml" SHAPE="528,897,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#campaign#closeActiveCampaign.xhtml:0"
+   NAME="item" PATH="/pages/campaign/closeActiveCampaign.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="manageActiveCampaigns::#pages#campaign#manageActiveCampaigns.xhtml"
+    NAME="output" PATH="/pages/campaign/manageActiveCampaigns.xhtml"
+    TARGET="rules:#pages#campaign#manageActiveCampaigns.xhtml"
+    TITLE="manageActiveCampaigns" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#login#changePassword.xhtml"
+  PATH="/pages/login/changePassword.xhtml" SHAPE="320,721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#addIrregularCampaignBenefit.xhtml"
+  PATH="/pages/campaign/addIrregularCampaignBenefit.xhtml"
+  SHAPE="320,1345,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#campaign#addIrregularCampaignBenefit.xhtml:0"
+   NAME="item" PATH="/pages/campaign/addIrregularCampaignBenefit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="defineCampaignBenefit::#pages#campaign#defineCampaignBenefit.xhtml"
+    NAME="output" PATH="/pages/campaign/defineCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#defineCampaignBenefit.xhtml"
+    TITLE="defineCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#userCampaignActionsReportCriteria.xhtml"
+  PATH="/pages/reports/userCampaignActionsReportCriteria.xhtml"
+  SHAPE="320,753,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#reports#userCampaignActionsReportCriteria.xhtml:0"
+   NAME="item"
+   PATH="/pages/reports/userCampaignActionsReportCriteria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="showUserCampaignActionsReportResult::#pages#reports#userCampaignActionsReportResult.xhtml"
+    NAME="output"
+    PATH="/pages/reports/userCampaignActionsReportResult.xhtml"
+    TARGET="rules:#pages#reports#userCampaignActionsReportResult.xhtml"
+    TITLE="showUserCampaignActionsReportResult" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#userCampaignActionsReportResult.xhtml"
+  PATH="/pages/reports/userCampaignActionsReportResult.xhtml"
+  SHAPE="544,1105,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#campaignSummaryReportCriteria.xhtml"
+  PATH="/pages/reports/campaignSummaryReportCriteria.xhtml"
+  SHAPE="336,785,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#reports#campaignSummaryReportCriteria.xhtml:0"
+   NAME="item" PATH="/pages/reports/campaignSummaryReportCriteria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="viewCampaignSummaryReportResult::#pages#reports#campaignSummaryReportResult.xhtml"
+    NAME="output"
+    PATH="/pages/reports/campaignSummaryReportResult.xhtml"
+    TARGET="rules:#pages#reports#campaignSummaryReportResult.xhtml"
+    TITLE="viewCampaignSummaryReportResult" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#campaignSummaryReportResult.xhtml"
+  PATH="/pages/reports/campaignSummaryReportResult.xhtml"
+  SHAPE="560,1137,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#needyCase#searchNeedyCase.xhtml"
+  PATH="/pages/needyCase/searchNeedyCase.xhtml" SHAPE="336,817,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#needyCase#searchNeedyCase.xhtml:0"
+   NAME="item" PATH="/pages/needyCase/searchNeedyCase.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="viewSearchNeedyCasesResult::#pages#needyCase#searchNeedyCaseResult.xhtml"
+    NAME="output" PATH="/pages/needyCase/searchNeedyCaseResult.xhtml"
+    TARGET="rules:#pages#needyCase#searchNeedyCaseResult.xhtml"
+    TITLE="viewSearchNeedyCasesResult" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#needyCase#searchNeedyCaseResult.xhtml"
+  PATH="/pages/needyCase/searchNeedyCaseResult.xhtml"
+  SHAPE="560,1169,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#needyCase#searchNeedyCaseResult.xhtml:0" NAME="item"
+   PATH="/pages/needyCase/searchNeedyCaseResult.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="viewNeedycaseBenefitsReport::#pages#reports#needyCaseBenefitsReportResult.xhtml"
+    NAME="output"
+    PATH="/pages/reports/needyCaseBenefitsReportResult.xhtml"
+    TARGET="rules:#pages#reports#needyCaseBenefitsReportResult.xhtml"
+    TITLE="viewNeedycaseBenefitsReport" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editRegularNeedyCase::#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    NAME="output1"
+    PATH="/pages/needyCase/addUpdateRegularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateRegularNeedyCase.xhtml"
+    TITLE="editRegularNeedyCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editIrregularNeedyCase::#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    NAME="output2"
+    PATH="/pages/needyCase/addUpdateIrregularNeedyCase.xhtml"
+    TARGET="rules:#pages#needyCase#addUpdateIrregularNeedyCase.xhtml"
+    TITLE="editIrregularNeedyCase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="convertIrregularToRegularCase::#pages#needyCase#convertIrregularToRegularCase.xhtml"
+    NAME="output3"
+    PATH="/pages/needyCase/convertIrregularToRegularCase.xhtml"
+    TARGET="rules:#pages#needyCase#convertIrregularToRegularCase.xhtml"
+    TITLE="convertIrregularToRegularCase" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#defineExceptionalCampaignBenefit.xhtml"
+  PATH="/pages/campaign/defineExceptionalCampaignBenefit.xhtml"
+  SHAPE="336,849,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#campaign#defineExceptionalCampaignBenefit.xhtml:0"
+   NAME="item"
+   PATH="/pages/campaign/defineExceptionalCampaignBenefit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="addExceptionalCampaignBenefit::#pages#campaign#addExceptionalCampaignBenefit.xhtml"
+    NAME="output"
+    PATH="/pages/campaign/addExceptionalCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#addExceptionalCampaignBenefit.xhtml"
+    TITLE="addExceptionalCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#addExceptionalCampaignBenefit.xhtml"
+  PATH="/pages/campaign/addExceptionalCampaignBenefit.xhtml"
+  SHAPE="560,1201,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#campaign#addPendingCampaignBenefit.xhtml"
+  PATH="/pages/campaign/addPendingCampaignBenefit.xhtml"
+  SHAPE="336,1505,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#campaign#addPendingCampaignBenefit.xhtml:0"
+   NAME="item" PATH="/pages/campaign/addPendingCampaignBenefit.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="defineCampaignBenefit::#pages#campaign#defineCampaignBenefit.xhtml"
+    NAME="output" PATH="/pages/campaign/defineCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#defineCampaignBenefit.xhtml"
+    TITLE="defineCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="addCampaignBenefit::#pages#campaign#addCampaignBenefit.xhtml"
+    NAME="output1" PATH="/pages/campaign/addCampaignBenefit.xhtml"
+    TARGET="rules:#pages#campaign#addCampaignBenefit.xhtml"
+    TITLE="addCampaignBenefit" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#needyCaseBenefitsReportCriteria.xhtml"
+  PATH="/pages/reports/needyCaseBenefitsReportCriteria.xhtml"
+  SHAPE="352,881,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#reports#needyCaseBenefitsReportCriteria.xhtml:0"
+   NAME="item"
+   PATH="/pages/reports/needyCaseBenefitsReportCriteria.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="viewNeedycaseBenefitsReport::#pages#reports#needyCaseBenefitsReportResult.xhtml"
+    NAME="output"
+    PATH="/pages/reports/needyCaseBenefitsReportResult.xhtml"
+    TARGET="rules:#pages#reports#needyCaseBenefitsReportResult.xhtml"
+    TITLE="viewNeedycaseBenefitsReport" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#reports#needyCaseBenefitsReportResult.xhtml"
+  PATH="/pages/reports/needyCaseBenefitsReportResult.xhtml"
+  SHAPE="576,1233,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

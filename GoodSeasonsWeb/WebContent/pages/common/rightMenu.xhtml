@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	>
+	
+	<ui:component id="rightMenuComponent">
+		<h:form id="rightMenuForm">
+			<h:panelGrid columns="2" width="100%">
+				<rich:panelMenu mode="server"
+						iconExpandedGroup="disc" iconCollapsedGroup="disc"
+						iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
+						iconCollapsedTopGroup="chevronDown" iconCollapsedTopPosition="right" style=" width : 100%;">
+					
+					<rich:panelMenuGroup label="#{msg.rightmenu_campaign}"  expanded="true" rendered="#{rightMenuBean.userPrivilegesMap['campaign'] != null}" >
+						<rich:panelMenuItem	label="#{msg.rightmenu_campaign_addRegullarCampaign}"  action="#{addUpdateCampaignBean.prepareForAddingRegullarCampaign}" rendered="#{rightMenuBean.userPrivilegesMap['campaign_addRegullarCampaign'] != null}">
+							<f:param value="rightMenu_addRegularCampaign" name="dest"/>
+							<f:param value="campaign_addRegullarCampaign" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_campaign_addIrrRegullarCampaign}"  action="#{addUpdateCampaignBean.prepareForAddingIrregullarCampaign}" rendered="#{rightMenuBean.userPrivilegesMap['campaign_addIrrRegullarCampaign'] != null}">
+							<f:param value="rightmenu_campaign_addIrrRegullarCampaign" name="dest"/>
+							<f:param value="campaign_addIrrRegullarCampaign" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_campaign_manageCurrentCampaigns}"  action="#{manageCampaignsBean.loadActiveCampaigns}" rendered="#{rightMenuBean.userPrivilegesMap['campaign_manageCurrentCampaigns'] != null}">
+							<f:param value="rightmenu_campaign_manageActiveCampaigns" name="dest"/>
+							<f:param value="campaign_manageCurrentCampaigns" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_campaign_manageOldCampaigns}"  action="#{manageCampaignsBean.loadClosedCampaigns}" rendered="#{rightMenuBean.userPrivilegesMap['campaign_manageOldCampaigns'] != null}">
+							<f:param value="rightmenu_campaign_manageClosedCampaigns" name="dest"/>
+							<f:param value="campaign_manageOldCampaigns" name="pName"/>
+						</rich:panelMenuItem>
+					</rich:panelMenuGroup>
+					
+					
+					<rich:panelMenuGroup label="#{msg.rightmenu_needyCase}"  expanded="true" rendered="#{rightMenuBean.userPrivilegesMap['needyCase'] != null}" >
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCase_manageRegularCase}"  action="#{manageNeedyCasesBean.manageNeedyCases}" rendered="#{rightMenuBean.userPrivilegesMap['needyCase_manageRegularCase'] != null}">
+							<f:param value="rightmenu_needyCase_manageRegularCase" name="dest"/>
+							<f:param value="needyCase_manageRegularCase" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCase_manageIrregularCase}"  action="#{manageNeedyCasesBean.manageNeedyCases}" rendered="#{rightMenuBean.userPrivilegesMap['needyCase_manageIrregularCase'] != null}">
+							<f:param value="rightmenu_needyCase_manageIrregularCase" name="dest"/>
+							<f:param value="needyCase_manageIrregularCase" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCase_addRegularCase}"  action="#{rightMenuBean.goToDest}" rendered="#{rightMenuBean.userPrivilegesMap['needyCase_addRegularCase'] != null}">
+							<f:param value="rightmenu_needyCase_addRegularCase" name="dest"/>
+							<f:param value="needyCase_addRegularCase" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCase_addIrrRegularCase}"  action="#{rightMenuBean.goToDest}" rendered="#{rightMenuBean.userPrivilegesMap['needyCase_addIrrRegularCase'] != null}">
+							<f:param value="rightmenu_needyCase_addIrrRegularCase" name="dest"/>
+							<f:param value="needyCase_addIrrRegularCase" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCase_searchNeedyCase}"  action="#{searchNeedyCaseBean.initNeedyCaseSearch}" rendered="#{rightMenuBean.userPrivilegesMap['needyCase_searchNeedyCases'] != null}">
+							<f:param value="rightmenu_needyCase_searchNeedyCase" name="dest"/>
+							<f:param value="needyCase_searchNeedyCases" name="pName"/>
+						</rich:panelMenuItem>
+					</rich:panelMenuGroup>
+					
+					<rich:panelMenuGroup label="#{msg.rightmenu_needyCaseBenefit}"  expanded="true" rendered="#{rightMenuBean.userPrivilegesMap['needyCaseBenefit'] != null}" >
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCaseBenefit_addBenefit}"  action="#{addPendingCampaignBenefitBean.initializeAddingCampaignBenefit}" rendered="#{rightMenuBean.userPrivilegesMap['needyCaseBenefit_addBenefit'] != null}">
+							<f:param value="rightmenu_needyCaseBenefit_addBenefit" name="dest"/>
+							<f:param value="needyCaseBenefit_addBenefit" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_needyCaseBenefit_addExceptionalBenefit}"  action="#{addExceptionalCampaignBenefit.initializeAddingExceptionalCampaignBenefit}" rendered="#{rightMenuBean.userPrivilegesMap['needyCaseBenefit_addExceptionalBenefit'] != null}">
+							<f:param value="rightmenu_needyCaseBenefit_addExceptionalBenefit" name="dest"/>
+							<f:param value="needyCaseBenefit_addExceptionalBenefit" name="pName"/>
+						</rich:panelMenuItem>
+					</rich:panelMenuGroup>
+					
+					<rich:panelMenuGroup label="#{msg.rightmenu_reports}"  expanded="true" rendered="#{rightMenuBean.userPrivilegesMap['reports'] != null}" >
+						<rich:panelMenuItem	label="#{msg.rightmenu_reports_needyCaseBenefits}"  action="#{rightMenuBean.goToDest}" rendered="#{rightMenuBean.userPrivilegesMap['reports_needyCaseBenefits'] != null}">
+							<f:param value="rightmenu_reports_needyCaseBenefits" name="dest"/>
+							<f:param value="reports_needyCaseBenefits" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_reports_userCampaignActions}"  action="#{reportingBean.initReportCriteria}" rendered="#{rightMenuBean.userPrivilegesMap['reports_userCampaignActions'] != null}">
+							<f:param value="rightmenu_reports_userCampaignActions" name="dest"/>
+							<f:param value="reports_userCampaignActions" name="pName"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_reports_campaignSummary}"  action="#{campaignSummaryReportBean.initCampaignSummaryReport}" rendered="#{rightMenuBean.userPrivilegesMap['reports_campaignSummary'] != null}">
+							<f:param value="rightmenu_reports_campaignSummary" name="dest"/>
+							<f:param value="reports_campaignSummary" name="pName"/>
+						</rich:panelMenuItem>
+					</rich:panelMenuGroup>
+					
+					<rich:panelMenuGroup label="#{msg.rightmenu_login}"  expanded="true" >
+						<rich:panelMenuItem	label="#{msg.rightmenu_login_login}"  action="#{rightMenuBean.goToDest}" rendered="#{!rightMenuBean.userLoggedIn}">
+							<f:param value="login" name="dest"/>
+						</rich:panelMenuItem>
+						<rich:panelMenuItem	label="#{msg.rightmenu_login_changepassword}"  action="#{rightMenuBean.goToDest}" rendered="#{rightMenuBean.userLoggedIn}">
+							<f:param value="rightMenu_changePassword" name="dest"/>
+						</rich:panelMenuItem>
+						
+						<rich:panelMenuItem	label="#{msg.rightmenu_login_logout}"  action="#{loginBean.logout}" rendered="#{rightMenuBean.userLoggedIn}">
+							<f:param value="rightMenu_logout" name="dest"/>
+						</rich:panelMenuItem>
+					</rich:panelMenuGroup>
+					
+				</rich:panelMenu>
+			</h:panelGrid>
+		</h:form>
+	</ui:component>
+
+</html>

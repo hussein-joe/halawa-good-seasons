@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:extdt="http://labs.jboss.com/jbossrichfaces/ui/extendedDataTable"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      
+	<ui:composition template="/pages/common/branchTemplate.xhtml">
+			<ui:define name="body">
+				<div align="center" style="vertical-align: middle;top: 100px;">
+					<table style="width: 100%">
+						<tr>
+							<td style="height: 20px;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<rich:panel style=" width : 100%;align: right;" styleClass="panel_center_align">
+									<f:facet name="header" >
+										<h:outputText value="#{msg.needyCase_search_panelTitle}"/>
+									</f:facet>
+									
+									<table width="100%" style="BACKGROUND-COLOR: #e0eff6; font-size: larger; background-image: url('../../images/common/background.png'); background-repeat: no-repeat;">
+										<tr>
+											<td style="font-size: large; font-weight: bold;">
+												<h:messages dir="rtl" showDetail="false" showSummary="true" globalOnly="false" errorStyle="color:red;" infoStyle="color:green;"/>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<a4j:form id="searchNeedycaseResultForm">
+													<rich:dataTable value="#{searchNeedyCaseBean.needyCases}" 
+															var="currentNeedyCase" id="searchNeedyCasesResultTable"
+															rows="#{searchNeedyCaseBean.pageSize}"
+															width="100%"
+															>
+														<f:facet name="header">
+															<rich:columnGroup>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_nationalId}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_name}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_manage_common_familyPersons}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.needyCase_search_result_caseType}"/>
+																</rich:column>
+																<rich:column>
+																	<h:outputText value="#{msg.common_operations}"/>
+																</rich:column>
+															</rich:columnGroup>
+														</f:facet>
+														<rich:column width="20%">
+															<h:outputText value="#{currentNeedyCase.nationalId}"/>
+														</rich:column>
+														<rich:column width="30%" sortBy="#{currentNeedyCase.fullName}">
+															<h:outputText value="#{currentNeedyCase.fullName}"/>
+														</rich:column>
+														<rich:column width="5%" sortBy="#{currentNeedyCase.familyPersons}"> 
+															<h:outputText value="#{currentNeedyCase.familyPersons}"/>	
+														</rich:column>
+														<rich:column width="10%">
+															<h:outputText value="#{msg.common_constants_needyCaseType_1}" rendered="#{currentNeedyCase.type == 1}"/> 
+															<h:outputText value="#{msg.common_constants_needyCaseType_2}" rendered="#{currentNeedyCase.type == 2}"/>
+														</rich:column>
+														<rich:column width="35%"> 
+															<h:commandLink action="#{needyCaseBenefitsReportBean.generateNeedyCaseBenefitsReport}"
+																rendered="#{searchNeedyCaseBean.canViewNeedyCaseBenefitsReport}">
+																<f:param name="selectedNationalId" value="#{currentNeedyCase.nationalId}"/>
+																<h:outputText value="#{msg.needyCase_search_result_benefitsReport}" />
+															</h:commandLink>
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1}"/>
+															<h:commandLink action="#{addUpdateRegularNeedyCaseBean.editRegullarNeedyCase}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1}">
+																<f:param name="selectedRegularNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_edit}"/>
+															</h:commandLink>
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2}"/>		
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.editIrregullarNeedyCase}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2}">
+																<f:param name="selectedIrregularNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_edit}"/>
+															</h:commandLink>
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1}"/>
+															<h:commandLink action="#{addUpdateRegularNeedyCaseBean.printBarCodeToPDF}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1}">
+																<f:param name="nationalId" value="#{currentNeedyCase.nationalId}"/>
+																<h:outputText value="#{msg.needyCase_manage_regular_actions_printCard}"/>
+															</h:commandLink>
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2}"/>		
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.printBarCodeToPDF}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2}">
+																<f:param name="nationalId" value="#{currentNeedyCase.nationalId}"/>
+																<h:outputText value="#{msg.needyCase_manage_regular_actions_printCard}"/>
+															</h:commandLink>
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; searchNeedyCaseBean.canConvertToRegularNeedyCase}"/>
+															<h:commandLink action="#{addUpdateRegularNeedyCaseBean.convertIrregularNeedyCaseToRegular}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; searchNeedyCaseBean.canConvertToRegularNeedyCase}">
+																<f:param name="selectedIrregularNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_convertToRegular}"/>
+															</h:commandLink>	
+															
+															
+															
+															
+															
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1 &amp;&amp; manageNeedyCasesBean.canDeleteRegularNeedyCase}"/>
+															<a4j:htmlCommandLink action="#{addUpdateRegularNeedyCaseBean.deleteRegularNeedyCase}"
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 1 &amp;&amp; manageNeedyCasesBean.canDeleteRegularNeedyCase}">
+																<f:param name="selectedNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_regular_actions_delete}"/>
+															</a4j:htmlCommandLink>
+															
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; manageNeedyCasesBean.canDeleteIrregularNeedyCase}"/>
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.deleteIrregularNeedyCase}" 
+																	rendered="#{currentNeedyCase.status == 1 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; manageNeedyCasesBean.canDeleteIrregularNeedyCase}">
+																<f:param name="selectedNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_delete}"/>
+															</h:commandLink>
+															
+															
+															
+															
+															
+															<h:outputText value=" - " rendered="#{currentNeedyCase.status == 10 &amp;&amp; currentNeedyCase.type == 1 &amp;&amp; manageNeedyCasesBean.canDeleteRegularNeedyCase}"/>
+															<a4j:htmlCommandLink action="#{addUpdateRegularNeedyCaseBean.undoDeleteRegularNeedyCase}"
+																	rendered="#{currentNeedyCase.status == 10 &amp;&amp; currentNeedyCase.type == 1 &amp;&amp; manageNeedyCasesBean.canDeleteRegularNeedyCase}">
+																<f:param name="selectedNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_regular_actions_undo_delete}"/>
+															</a4j:htmlCommandLink>
+															
+															<h:outputText value=" - " 
+																	rendered="#{currentNeedyCase.status == 10 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; manageNeedyCasesBean.canDeleteIrregularNeedyCase}"/>
+															<h:commandLink action="#{addUpdateIrregularNeedyCaseBean.undoDeleteIrregularNeedyCase}" 
+																rendered="#{currentNeedyCase.status == 10 &amp;&amp; currentNeedyCase.type == 2 &amp;&amp; manageNeedyCasesBean.canDeleteIrregularNeedyCase}">
+																<f:param name="selectedNeedyCaseId" value="#{currentNeedyCase.id}"/>
+																<h:outputText value="#{msg.needyCase_manage_irregular_operations_undo_delete}"/>
+															</h:commandLink>
+															
+															
+															
+															
+														</rich:column>
+														<f:facet name="footer">
+								                			<rich:datascroller id="searchNeedyCasesResultDS"  renderIfSinglePage="false" 
+								                				for="searchNeedyCasesResultTable"/>
+								            			</f:facet>
+													</rich:dataTable>
+												</a4j:form>
+											</td>
+										</tr>
+									</table>
+								</rich:panel>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</ui:define>
+	</ui:composition>
+
+</html>

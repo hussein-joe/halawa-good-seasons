@@ -1,0 +1,20 @@
+.rich-message-label {
+	
+	 font-style: italic;
+	 font-size: large;
+	 color: blue;
+}
+
+.rich-message-error {
+	
+	 font-size: large;
+	 color: red;
+	 font-style: normal;
+}
+
+.rich-message-info {
+	
+	 font-size: large;
+	 color: green;
+	 font-style: normal;
+}
